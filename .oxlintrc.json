@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "env": { "browser": true },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "plugins": ["unicorn", "typescript", "react", "jsx-a11y"],
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  },
+  "ignorePatterns": ["dist", "build", "coverage", ".vite", ".vercel", ".netlify", "node_modules"],
+  "overrides": [
+    {
+      "files": ["**/*.{test,spec}.{ts,tsx,js,jsx}"],
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ]
+}

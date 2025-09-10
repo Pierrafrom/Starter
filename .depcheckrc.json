@@ -1,0 +1,24 @@
+{
+  "skip-missing": false,
+  "ignores": [
+    "@types/*"
+  ],
+  "ignore-patterns": [
+    "dist",
+    "coverage",
+    "build",
+    ".vite",
+    ".vercel",
+    ".netlify"
+  ],
+  "specials": [
+    "babel",
+    "bin",
+    "eslint",
+    "husky",
+    "jest",
+    "lint-staged",
+    "prettier",
+    "webpack"
+  ]
+}

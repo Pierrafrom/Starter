@@ -1,0 +1,46 @@
+{
+  "extends": "@tsconfig/strictest/tsconfig.json",
+  "compilerOptions": {
+    /* ---- Language & strict mode ---- */
+    "target": "ESNext", // Emit modern JS
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // Full browser support
+    "module": "ESNext", // For modern bundlers (Vite/webpack)
+    "moduleResolution": "Bundler", // Optimized resolution for modern bundlers
+    "jsx": "react-jsx", // JSX transform for React 17+ (React 19 included)
+    "jsxImportSource": "react", // Required for JSX runtime
+
+    /* ---- Strict checks ---- */
+    "strict": true, // Enable all strict checks
+    "noUncheckedIndexedAccess": true, // Array/record access may return undefined
+    "exactOptionalPropertyTypes": true, // ? is taken literally in types
+    "noPropertyAccessFromIndexSignature": true,
+
+    /* ---- Code quality ---- */
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+
+    /* ---- Interop & tooling ---- */
+    "esModuleInterop": true, // Better compatibility with CommonJS libs
+    "allowSyntheticDefaultImports": true, // Allow default imports even if not defined
+    "resolveJsonModule": true, // Allow direct JSON imports
+    "isolatedModules": true, // Each file can be transpiled independently
+    "moduleDetection": "force", // Force auto-detection of ES modules
+
+    /* ---- Paths & ergonomics ---- */
+    "baseUrl": ".", // Support absolute imports
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
+    /* ---- Build output ---- */
+    "skipLibCheck": true, // Skip type checking of .d.ts files for faster builds
+    "forceConsistentCasingInFileNames": true // Enforce consistent file name casing
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
