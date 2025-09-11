@@ -1,8 +1,15 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
-  "entry": ["src/main.tsx"],
-  "project": ["src/**/*.{ts,tsx}"],
-  "ignore": ["src/**/*.stories.*", "src/**/__mocks__/**"],
+  "entry": [
+    "src/app/main.tsx"
+  ],
+  "project": [
+    "src/**/*.{ts,tsx}"
+  ],
+  "ignore": [
+    "src/**/*.stories.*",
+    "src/**/__mocks__/**"
+  ],
   "rules": {
     "dependencies": "warn"
   }

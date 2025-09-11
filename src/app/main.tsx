@@ -4,6 +4,12 @@ import { createRoot } from 'react-dom/client';
 
 import { App } from './App';
 
+// start MSW worker in dev for local mocking
+if (import.meta.env.DEV) {
+  // dynamic import to avoid loading worker in test/node environment
+  import('@/mocks/browser').then((m) => m.startWorker());
+}
+
 const el = document.getElementById('root');
 if (!el) throw new Error("Missing <div id='root' /> in index.html");
 
