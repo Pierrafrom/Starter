@@ -3,32 +3,43 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
+"scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "tsc --noEmit --watch",
+
     "format": "biome format --write",
     "format:check": "biome format",
     "lint": "biome lint",
     "lint:fix": "biome lint --write",
     "check": "biome check",
     "check:fix": "biome check --write",
+
+    "oxlint": "oxlint src --react-plugin --jsx-a11y-plugin",
+    "oxlint:fix": "oxlint src --react-plugin --jsx-a11y-plugin --fix",
+    "oxlint:imports": "oxlint src --import-plugin --tsconfig tsconfig.json",
+    "oxlint:type-aware": "oxlint src --react-plugin --jsx-a11y-plugin --type-aware",
+
     "deadcode": "knip --config knip.json --tsConfig tsconfig.json",
     "deadcode:strict": "knip --strict --config knip.json --tsConfig tsconfig.json",
     "exports:unused": "knip --exports --config knip.json --tsConfig tsconfig.json",
     "deps:unused": "depcheck --json",
-    "oxlint": "oxlint . --react-plugin --jsx-a11y-plugin",
-    "oxlint:fix": "oxlint . --react-plugin --jsx-a11y-plugin --fix",
-    "oxlint:imports": "oxlint . --import-plugin --tsconfig tsconfig.json",
-    "oxlint:type-aware": "oxlint . --react-plugin --jsx-a11y-plugin --type-aware",
+
     "test": "vitest",
-  "test:ci": "vitest --run",
-  "test:watch": "vitest --watch",
-  "test:coverage": "vitest --run --coverage",
-  "test:people": "vitest src/features/people --run",
-  "prepare:table": "echo 'install @tanstack/react-table and match-sorter if missing'",
+    "test:watch": "vitest --watch",
+    "test:ci": "vitest --run",
+    "test:coverage": "vitest --run --coverage",
+    "test:people": "vitest src/features/people --run",
+
+    "fix:all": "biome check --write && oxlint src --react-plugin --jsx-a11y-plugin --fix",
+    "precommit:fast": "pnpm run fix:all && pnpm run typecheck",
+    "precommit:strict": "pnpm run fix:all && pnpm run typecheck && pnpm run deadcode && pnpm run test:people",
+    "audit:deps": "depcheck --json || true",
+    "verify": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run oxlint",
+
     "ci": "pnpm run check && pnpm run typecheck && pnpm run oxlint && pnpm run deadcode:strict && pnpm run test:ci"
   },
   "devDependencies": {

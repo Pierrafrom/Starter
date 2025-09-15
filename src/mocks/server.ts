@@ -1,11 +1,11 @@
 import { setupServer } from 'msw/node';
-import { scenarios } from './scenarios';
+import { type ScenarioName, scenarios } from './scenarios';
 
 // default server with no handlers; tests can call use() with scenario handlers
 export const server = setupServer();
 
 // helper to apply a named scenario
-export function useScenario(name: keyof typeof scenarios) {
+export function useScenario(name: ScenarioName) {
   const handlers = scenarios[name] || [];
   server.use(...handlers);
 }
